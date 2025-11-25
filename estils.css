@@ -1,0 +1,137 @@
+/*Estilor root*/
+:root {
+  --color-fons: white;
+  --color-principal:green;
+  --color-fosc: black;
+  --color-clar: white;
+  --espaci-petit: 0.5rem;
+  --espai-mitja: 1rem;
+  --espai-gran: 2rem;
+}
+
+/*Creacion de la navbar*/
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color:whitesmoke;
+  backdrop-filter: blur(10px);
+}
+
+/*Poner los enlaces como quiero (elegir el color y quitar el subrallado)*/
+.navbar a {
+  color: black;
+  text-decoration: none;
+}
+
+/*Cambiar el color cuando paso por encima */
+.navbar a:hover {
+  color: peru;
+}
+
+/*Quitar formato de lista y poner como quiero */
+.navbar ul {
+  list-style: none;      
+  display: flex;    
+  gap: var(--espai-mitja);
+  justify-content: center;
+  padding: var(--espai-mitja);
+}
+
+/* Títulos */
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Texto y párrafos */
+body, p {
+  font-family: 'Inter', sans-serif;
+}
+
+/*CSS PARA INDEX:HTML*/
+.hero {
+  text-align: center;
+}
+/* Título grande */
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+}
+/* Subtítulo */
+.hero p {
+  font-family: 'Inter', sans-serif; 
+  font-size: 1.2rem;
+}
+/* Botón con icono */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--espaci-petit) var(--espai-mitja);
+  background: var(--color-principal);
+  color: var(--color-clar);
+  text-decoration: none;
+}
+.btn:hover {
+  background: peru;
+}
+/*Seccion de las tres targetes*/
+.cards {
+  display: flex;                 
+  gap: var(--espai-mitja);       
+  justify-content: center;        
+  padding: var(--espai-gran);
+}
+.card {
+  background: var(--color-clar);
+  padding: var(--espai-mitja);
+  width: 150px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.card img {
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.4s; /
+}
+.img-alt {
+  opacity: 0;
+}
+.card:hover {
+  transform: scale(1.05); 
+  box-shadow: 0px 4px 12px black; 
+}
+.card:hover .img-alt {
+  opacity: 1; 
+}
+.linear {
+  transition-timing-function: linear;
+}
+.ease {
+  transition-timing-function: ease;
+}
+.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+/*Seccion submenu*/
+.submenu nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--espai-mitja);
+  margin: var(--espai-gran) 0;
+}
+.submenu a {
+  color: var(--color-fosc);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  padding: var(--espaci-petit) var(--espai-mitja);
+  transition: color 0.3s, letter-spacing 0.3s; 
+}
+.submenu a:hover {
+  color: var(--color-principal);       
+  letter-spacing: 0.2rem;              
+}
