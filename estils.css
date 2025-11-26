@@ -15,8 +15,10 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color:whitesmoke;
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 /*Poner los enlaces como quiero (elegir el color y quitar el subrallado)*/
 .navbar a {
@@ -74,11 +76,14 @@ body, p {
 .grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .card {
   display: flex;
   flex-direction: column;
   width: 220px;
+
+  
 }
 .card h2 {
   margin: 0 0 8px;
@@ -90,6 +95,7 @@ body, p {
   height: var(--box-h);
   transition: all 0.6s ease;
   width: var(--box-w);
+  
 }
 /* 1) Color */
 .box.color {
@@ -133,4 +139,214 @@ body, p {
 .submenu a:hover {
   color: var(--color-principal);       
   letter-spacing: 1rem;              
+}
+/* CSS para galeria.html */
+.loader-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 6px solid lightgray;
+  border-top-color: green;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1000deg);
+  }
+}
+/* ANIMACIÓ PRINCIPAL */
+.main-animation {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.anim-box {
+  width: 120px;
+  height: 120px;
+  background: var(--color-principal);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  animation: bounceSpin 3s ease-in-out 1s 4 alternate;
+}
+
+/* SEQÜÈNCIA DE FOTOGRAMES */
+@keyframes bounceSpin {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+    background: peru;
+  }
+  50% {
+    transform: translateY(-80px) rotate(180deg) scale(1.2);
+    opacity: 0.5;
+    background: orange;
+  }
+  100% {
+    transform: translateY(0) rotate(360deg) scale(1);
+    opacity: 1;
+    background: greenyellow;
+  }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* TIMELINE version (modern browsers) */
+.scroll-reveal {
+  margin-top: 300px;
+  margin-bottom: 300px;
+}
+/* Contenedor scroll */
+.scroll-reveal {
+  height: 150px;
+  transform: translateY(60px) scale(0.8);
+  animation: reveal 1.2s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 40%;
+}
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8);
+    background: lightgray;
+  }
+  50% {
+    background: var(--color-principal);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background: peru;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: reveal 1.2s ease-out both;
+  }
+}
+/* CSS para guia-estil */
+
+/* Typography */
+.typography h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.05rem;
+}
+
+.typography h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: 0.04rem;
+}
+
+.typography h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  letter-spacing: 0.03rem;
+}
+
+.typography p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.02rem;
+}
+
+/* Iconos */
+.icons span.material-symbols-outlined {
+  font-size: 2rem;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+/* Botones */
+.buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--color-principal);
+  color: var(--color-clar);
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+.buttons .btn span.material-symbols-outlined {
+  margin-right: 0.5rem;
+}
+
+.buttons .btn:hover {
+  background: peru;
+  transform: scale(1.05);
+}
+
+/* Colores */
+.colors {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.colors div.color-swatch {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: white;
+}
+/* Version pantalla pequeña */
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 80%;
+    margin-bottom: 1.5rem;
+  }
+
+  .scroll-reveal {
+    width: 80%;
+    height: 120px;
+  }
+
+  .buttons .btn {
+    width: 80%;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .colors div.color-swatch {
+    width: 80%;
+  }
 }
