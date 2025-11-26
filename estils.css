@@ -7,8 +7,9 @@
   --espaci-petit: 0.5rem;
   --espai-mitja: 1rem;
   --espai-gran: 2rem;
+  --box-w: 100px;
+  --box-h: 100px;
 }
-
 /*Creacion de la navbar*/
 .navbar {
   position: sticky;
@@ -17,18 +18,15 @@
   background-color:whitesmoke;
   backdrop-filter: blur(10px);
 }
-
 /*Poner los enlaces como quiero (elegir el color y quitar el subrallado)*/
 .navbar a {
   color: black;
   text-decoration: none;
 }
-
 /*Cambiar el color cuando paso por encima */
 .navbar a:hover {
   color: peru;
 }
-
 /*Quitar formato de lista y poner como quiero */
 .navbar ul {
   list-style: none;      
@@ -37,12 +35,10 @@
   justify-content: center;
   padding: var(--espai-mitja);
 }
-
 /* Títulos */
 h1, h2 {
   font-family: 'Poppins', sans-serif;
 }
-
 /* Texto y párrafos */
 body, p {
   font-family: 'Inter', sans-serif;
@@ -75,47 +71,50 @@ body, p {
   background: peru;
 }
 /*Seccion de las tres targetes*/
-.cards {
-  display: flex;                 
-  gap: var(--espai-mitja);       
-  justify-content: center;        
-  padding: var(--espai-gran);
+.grid {
+  display: flex;
+  flex-wrap: wrap;
 }
 .card {
-  background: var(--color-clar);
-  padding: var(--espai-mitja);
-  width: 150px;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.4s, box-shadow 0.4s;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
 }
-.card img {
-  width: 100%;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: opacity 0.4s; /
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: #333;
 }
-.img-alt {
-  opacity: 0;
+.box {
+  background: #3498db;
+  height: var(--box-h);
+  transition: all 0.6s ease;
+  width: var(--box-w);
 }
-.card:hover {
-  transform: scale(1.05); 
-  box-shadow: 0px 4px 12px black; 
+/* 1) Color */
+.box.color {
+  background-color: var(--color-principal);
+  transition: background-color 0.8s ease;
 }
-.card:hover .img-alt {
-  opacity: 1; 
+.box.color:hover {
+  background-color: peru;
 }
-.linear {
-  transition-timing-function: linear;
+/* 2) Mida */
+.box.mida {
+  background-color: peru;
+  transition: width 0.8s ease, height 0.8s ease;
 }
-.ease {
-  transition-timing-function: ease;
+.box.mida:hover {
+  width: 160px;
+  height: 160px;
 }
-.ease-in-out {
-  transition-timing-function: ease-in-out;
+/* 3) Posició (fem servir transform per no desmuntar el layout) */
+.box.posicio {
+  background-color: var(--color-principal);
+  transition: transform 0.8s ease-in-out;
+}
+.box.posicio:hover {
+  transform: translateX(80px);
 }
 /*Seccion submenu*/
 .submenu nav {
@@ -133,5 +132,5 @@ body, p {
 }
 .submenu a:hover {
   color: var(--color-principal);       
-  letter-spacing: 0.2rem;              
+  letter-spacing: 1rem;              
 }
